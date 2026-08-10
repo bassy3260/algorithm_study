@@ -1,0 +1,103 @@
+package swea.dijkstra;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class dijkstra_practice2 {
+
+	static final int INF = 999999999;
+	
+	// 간선 정보를 담을 클래스(to: 도착 정점, weight: 간선 가중치)
+	static class Edge{
+		int to;
+		int weight;
+		
+		public Edge(int to, int weight) {
+			this.to = to;
+			this.weight = weight;
+		}
+	}
+	
+	
+	public static void main(String[] args) {
+        int n = 6;
+        
+        List<List<Edge>> graph = new ArrayList<>();
+        for(int i = 0; i<n; i++) {
+        	graph.add(new ArrayList<>());
+        }
+		
+		graph.get(0).add(new Edge(1,2));
+		graph.get(0).add(new Edge(2,5));
+		graph.get(0).add(new Edge(5,7));
+		
+		graph.get(1).add(new Edge(0,2));
+		graph.get(1).add(new Edge(2,1));
+		graph.get(1).add(new Edge(3,2));
+		
+		graph.get(2).add(new Edge(0,5));
+		graph.get(2).add(new Edge(1,1));
+		graph.get(2).add(new Edge(3,3));
+		graph.get(2).add(new Edge(4,4));
+		
+		graph.get(3).add(new Edge(1,2));
+		graph.get(3).add(new Edge(2,3));
+		graph.get(3).add(new Edge(4,1));
+		graph.get(3).add(new Edge(5,2));
+		
+		graph.get(4).add(new Edge(2,4));
+		graph.get(4).add(new Edge(3,1));
+		graph.get(4).add(new Edge(5,3));
+		
+		graph.get(5).add(new Edge(0,7));
+		graph.get(5).add(new Edge(3,2));
+		graph.get(5).add(new Edge(4,3));
+		
+	
+		int start = 0; 
+		int[] dist = dijkstraList(graph, n, start);
+       
+     // 결과 출력
+        // dist[i]는 "시작점 A에서 i번 정점까지"의 최단 거리
+        char[] vertexName = {'A','B','C','D','E','F'};
+        for (int i = 0; i < dists.length; i++) {
+        	for(int j = 0; j< dists.length;j++) {
+            System.out.println(vertexName[i] + " → " + vertexName[j] 
+                               + " 최단 거리: " + dists[i][j]);
+        	}
+        }
+	}
+	public static int[] dijkstraList(List<List<Edge>> graph, int n,  int start) {
+		int[] dist = new int[n]; 
+		boolean[] visited = new boolean[n];
+		
+		// 전체를 초기화
+		for(int i = 0; i<n; i++) {
+			dist[i]= INF;
+		}
+		// 시작은 0
+		dist[start] = 0;
+
+		// 모든 정점을 하나씩 돌아서 방문하지 않은 정점 중 dis값이 가장 작은 정점 찾기
+		for(int i = 0; i<n; i++) {
+			int u = -1;
+			int minDist =INF;
+			for(int j =0;j<n; j++) {
+				if(!visited[j] && dist[j]<minDist) {
+					minDist = dist[j];
+					u=j;
+				}
+			}
+			
+			if(u == -1)break;
+			visited[u] = true;
+			
+			for(Edge edge:graph.get(u)) {
+				
+			}
+		}
+		
+		
+		return dist;
+	}
+}
