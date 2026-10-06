@@ -21,7 +21,6 @@ class Solution {
                 sum-=start;
                 start++;         
             }else{
-                System.out.println(start+" "+end);
                 // 해당 숫자면.. cnt++
                 answer++;
                 // 하고 start++
@@ -31,14 +30,5 @@ class Solution {
             }
         }
         return answer;
-    }
-    
-    // start부터 end까지 합을 구하는 함수 
-    public int sum(int start, int end){
-        int sum = 0;
-        for(int i = start; i<=end; i++){
-            sum +=i;
-        }
-        return sum;
     }
 }
