@@ -2,8 +2,6 @@ import java.util.*;
 
 class Solution {
     public int solution(int k, int[] tangerine) {
-        int answer = 0;
-        
         // 해시맵으로 값 세기
         Map<Integer, Integer> map = new HashMap<>();
         
@@ -14,8 +12,7 @@ class Solution {
        
         ArrayList<Integer> list = new ArrayList<>(map.values());
         
-        Collections.sort(list);
-        Collections.reverse(list);
+        list.sort(Collections.reverseOrder());
         
         int cnt = 0;
         int sum = 0;
